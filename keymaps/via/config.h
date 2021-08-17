@@ -1,4 +1,5 @@
 /* Copyright
+ *   2021 mikewl
  *   2021 solartempest
  *   2021 QMK
  *
@@ -18,5 +19,5 @@
 
 #pragma once
 
-// Set 10 layers for VIA
-#define DYNAMIC_KEYMAP_LAYER_COUNT 10
+// Set 4 layers for VIA
+#define DYNAMIC_KEYMAP_LAYER_COUNT 4

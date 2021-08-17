@@ -1,4 +1,5 @@
 /* Copyright
+ *   2021 mikewl
  *   2021 solartempest
  *   2021 QMK
  *
@@ -17,27 +18,8 @@
  */
 
 #include "ps17.h"
+#include QMK_KEYBOARD_H
 
-bool encoder_update_user(uint8_t index, bool clockwise) { // QMK encoder functionality
-  #ifdef VIA_ENABLE //Add in VIA setting of rotary encoder keymap
-	    if (index == 0) { // First encoder
-		if (clockwise) {
-			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 0}, .pressed = true, .time = (timer_read() | 1)  });  //Time is 1 tick otherwise empty event
-			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 0}, .pressed = false, .time = (timer_read() | 1)  });
-			} 
-			else {
-			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 2}, .pressed = true, .time = (timer_read() | 1)  });
-			action_exec((keyevent_t){.key = (keypos_t){.row = 0, .col = 2}, .pressed = false, .time = (timer_read() | 1)  });
-			}
-		}
-		/*if (clockwise) { //This code only works for single keypresses with the rotary encoder
-		  tap_code(dynamic_keymap_get_keycode(biton32(layer_state), 0, 0)); //Allow setting of keymap in VIA
-		} else {
-		  tap_code(dynamic_keymap_get_keycode(biton32(layer_state), 0, 2)); //Allow setting of keymap in VIA
-		}*/
-  #endif
-  return true;
-}
 
 #ifdef RGB_MATRIX_ENABLE //Add in addressable LED underglow support with physical locations
 	led_config_t g_led_config = { {
