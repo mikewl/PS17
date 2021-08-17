@@ -112,19 +112,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) { // QMK encoder functio
 #endif
 
 void keyboard_post_init_user(void) {	//run as last task in keyboard init
-  #ifdef RGB_MATRIX_ENABLE
-    //NOTE 1: Layer lighting doesn't work in RGB matrix mode
-		//NOTE 2: VIA lighting tab doesn't work and will crash in RGB matrix mode
-		//NOTE 3: VIA layers doesn't seem to work properly in RGB matrix mode
-		//rgb_matrix_enable_noeeprom(); //turn on RGB matrix based on previous state
-		rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_REACTIVE_MULTIWIDE); //set initial RGB matrix mode	
-		rgb_matrix_sethsv_noeeprom(50, 255, 80); //sets LED to green-yellow
-  #endif
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_layers = my_rgb_layers;// Enable the LED layers
-		rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT+8); // Set to static gradient 9
-		layer_move(0); //start on layer 0 to get the lighting activated
-  #endif
+	rgblight_layers = my_rgb_layers;// Enable the LED layers
+	rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT+8); // Set to static gradient 9
+	layer_move(0); //start on layer 0 to get the lighting activated
 };
 
 

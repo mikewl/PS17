@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 void keyboard_post_init_user(void) {	//run as last task in keyboard init
-  #ifdef RGB_MATRIX_ENABLE
+  #ifndef OPENRGB_ENABLE
     //NOTE 1: Layer lighting doesn't work in RGB matrix mode
 		//NOTE 2: VIA lighting tab doesn't work and will crash in RGB matrix mode
 		//NOTE 3: VIA layers doesn't seem to work properly in RGB matrix mode
