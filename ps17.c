@@ -22,7 +22,7 @@
 
 
 #ifdef RGB_MATRIX_ENABLE //Add in addressable LED underglow support with physical locations
-	led_config_t g_led_config = { {
+	/*led_config_t g_led_config = { {
 		//Key matrix to LED index
 		{	NO_LED,	NO_LED,	NO_LED, NO_LED, },
 		{	0,	1,	2,	3,	},
@@ -46,5 +46,58 @@
 	}, {
 	  4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4, // LED Index to Flag. 4 for key backlight.
       2,2,2,2,2,2,2,2,2,2,2 // 2 for case underglow.
+	} };*/
+
+		led_config_t g_led_config = { {
+		//Key matrix to LED index
+		{	NO_LED,	NO_LED,	NO_LED, NO_LED, },
+		{	0,	1,	2,	3,	},
+		{	4,	5,	6,	7,	},
+		{	8,	9,	10,	NO_LED,	},
+		{	11,	12,	13,	14,	},
+		{	15,	NO_LED,	16,	NO_LED,	}
+		
+	}, {
+	  // LED Key Index to Physical Position, calculated with Plot Digitizer and scaled PCB Image with center at {126,126}
+
+		// Per-key lighting - diagram matches values
+		/*// Original "correct" values
+	  {74,25},{108,25},{144,25},{179,25},
+		{74,60},{109,60},{143,60},{188, 51},
+		{74,95},{109,95},{143,95},
+		{73,129},{109,129},{144,129},{188,121},
+		{91,165},{144,165},*/
+
+		// Reshaped for OpenRGB - get + aand enter on correct space
+	  {74,25},{108,25},{144,25},{179,25},
+		{74,60},{109,60},{143,60},{188, 60},
+		{74,95},{109,95},{143,95},
+		{73,129},{109,129},{144,129},{188,129},
+		{91,165},{144,165},
+	 
+	  // LED underglow - left side bottom -> top then right side bottom -> top then finally middle bottom
+		/* // Original "correct" values
+	  {61,232},{61,197},{61,158},{61,88},{61,26},
+		{192,26},{192,88},{192,158},{192,197},{183,232},
+		{127,232}*/
+		// Reshaped for OpenRGB  - 19 out of position
+		{61,232},{61,197},{19,158},{61,88},{61,26},
+		{192,26},{192,88},{192,158},{192,197},{183,232},
+		{127,232}
+
+
+	}, {
+		// LED Index to Flag. 4 for key backlight.
+	  4,4,4,4,
+		4,4,4,4,
+		4,4,4,
+		4,4,4,4,
+		4,4,
+    // 2 for case underglow.
+		2,    2,
+		2,    2,
+		2,    2,
+		2,    2,
+		2, 2, 2 
 	} };
 #endif

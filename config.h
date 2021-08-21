@@ -32,13 +32,8 @@
 
 //#define ENCODER_RESOLUTION 2 // default is 4
 
-// key matrix size 
-#ifdef RGBLIGHT_ENABLE 
-	#define MATRIX_ROWS 6
-#endif
-#ifdef RGB_MATRIX_ENABLE 
-	#define MATRIX_ROWS 11 //Numpad actually has 6 rows. 5 rows were added for underglow RGB matrix to work together
-#endif
+// key matrix size - 1 extra row is added for encoder support
+#define MATRIX_ROWS 6
 #define MATRIX_COLS 4
 
 // Encoder matrix
@@ -96,7 +91,7 @@
 	//RGB LED logical order map
 	//Right->Left, Top->Bottom
 	#define RGBLIGHT_LED_MAP LED_LAYOUT( \
-		1,                  0, \
+	  1,                  0, \
 		3,                  2, \
 		9,   8,  7,  6,  5, 4, \
 		    13, 12, 11, 10,    \
@@ -112,7 +107,7 @@
 	#define RGB_MATRIX_CENTER { 126, 126 };
 	#define RGB_MATRIX_KEYPRESSES
 	#define RGB_MATRIX_STARTUP_VAL 40  // default brightness on clearing EEPROM
-	#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180 // brightness level max is 255
+	#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 140 // brightness level max is 255
 	#define RGB_DISABLE_WHEN_USB_SUSPENDED true
 	#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 
